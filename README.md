@@ -23,7 +23,7 @@
 ## 🎮 快速开始
 ```bash
 # 克隆本仓库（虽然你可能只是看看）
-git clone https://github.com/your-repo.git
+git clone https://github.com/Dawn-Jovi/PersonalWeb.github.io.git
 
 # 安装依赖（其实大部分时间在解决依赖冲突）
 npm install
