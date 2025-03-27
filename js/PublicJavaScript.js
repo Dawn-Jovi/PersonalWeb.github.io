@@ -40,7 +40,7 @@ function activateEasterEgg() {
 
   // 4. 2秒后跳转页面
   setTimeout(() => {
-    window.location.href = '../404notfound/404.html'; // 替换为你的目标页面
+    window.location.href = '/personalweb.github.io/404notfound/404.html'; // 替换为你的目标页面
   }, 2000);
 }
 
