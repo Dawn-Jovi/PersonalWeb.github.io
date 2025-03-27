@@ -35,6 +35,15 @@
 
     <div id="navbar-placeholder"></div>
 
+    <script>
+        fetch('./navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('加载导航栏失败:', error));
+    </script>
+
     <!-- 主容器 -->
     <div id="wrapper">
         <h1>
@@ -61,7 +70,6 @@
     <!-- 引入jQuery和主脚本 -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="js/csm-random.js"></script>
-    <script src="js/load-navbar.js"></script>
 </body>
 
 </html>
