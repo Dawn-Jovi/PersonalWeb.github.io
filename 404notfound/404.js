@@ -11,7 +11,7 @@ const updateProgress = () => {
     seconds--;
 
     if (seconds < 0) {
-        window.location.href = '/index.html';
+        window.location.href = './index.html';
     } else {
         setTimeout(updateProgress, 1000);
     }
