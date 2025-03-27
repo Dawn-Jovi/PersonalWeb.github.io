@@ -11,6 +11,14 @@
 <body>
     
     <div id="navbar-placeholder"></div>
+    <script>
+        fetch('./navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('加载导航栏失败:', error));
+    </script>
 
     <div class="container">
         <!-- 头部区域 -->
@@ -87,8 +95,7 @@
 
     </div>
 
-    <script src="js/AboutMe.js"></script>   
-    <script src="./js/load-navbar.js"></script>
+    <script src="./js/AboutMe.js"></script>   
 
 </body>
 </html>
