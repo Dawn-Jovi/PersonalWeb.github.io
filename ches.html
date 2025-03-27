@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .contribution-graph {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .day-cell {
+            fill: #ebedf0;
+            rx: 3px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .day-cell:hover {
+            stroke: rgba(0, 0, 0, 0.1);
+            stroke-width: 1px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-family: monospace;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            border-left: 3px solid #58a6ff;
+        }
+
+        .month-label {
+            font-size: 10px;
+            fill: #666;
+        }
+
+        /* 活跃度颜色 */
+        [data-level="1"] {
+            fill: #9be9a8;
+        }
+
+        [data-level="2"] {
+            fill: #40c463;
+        }
+
+        [data-level="3"] {
+            fill: #30a14e;
+        }
+
+        [data-level="4"] {
+            fill: #216e39;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contribution-graph">
+        <h3 style="margin-bottom: 20px;">📅 学习活跃度热力图</h3>
+        <div id="heatmap-container"></div>
+    </div>
+
+    <script>
+        // 配置参数
+        const config = {
+            cellSize: 14,
+            cellMargin: 3,
+            monthsToShow: 6,  // 显示最近6个月
+            colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+        }
+
+        // 生成模拟数据（按日期升序排列）
+        function generateMockData() {
+            const data = {};
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // 生成最近6个月的数据
+            for (let i = 0; i < 180; i++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const level = Math.floor(Math.random() * 4); // 0-4
+                data[date.toISOString().split('T')[0]] = level;
+            }
+            return data;
+        }
+
+        // 创建热力图
+        function createHeatmap() {
+            const container = document.getElementById('heatmap-container');
+            const data = generateMockData();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // 计算起始日期（最近6个月）
+            const startDate = new Date(today);
+            startDate.setMonth(startDate.getMonth() - config.monthsToShow);
+
+            // 创建SVG元素
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", "0 0 760 120");
+            svg.setAttribute("width", "100%");
+
+            // 创建月份标签
+            const monthLabels = [];
+            for (let m = 0; m <= config.monthsToShow; m++) {
+                const date = new Date(startDate);
+                date.setMonth(date.getMonth() + m);
+                monthLabels.push(date.toLocaleString('default', { month: 'short' }));
+            }
+
+            // 添加月份标签
+            monthLabels.forEach((month, index) => {
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("class", "month-label");
+                text.setAttribute("x", index * (config.cellSize * 4.35));
+                text.setAttribute("y", 20);
+                text.textContent = month;
+                svg.appendChild(text);
+            });
+
+            // 创建日期网格（从左到右，右下角最新）
+            let xPos = 0;
+            const now = new Date(today);
+
+            // 从最旧日期开始绘制（左侧）
+            for (let week = 0; week < config.monthsToShow * 4; week++) { // 每月约4周
+                const weekStart = new Date(startDate);
+                weekStart.setDate(weekStart.getDate() + week * 7);
+
+                // 每周的7天（从上到下）
+                for (let day = 0; day < 7; day++) {
+                    const currentDate = new Date(weekStart);
+                    currentDate.setDate(currentDate.getDate() + day);
+
+                    // 只显示过去日期
+                    if (currentDate > today) continue;
+
+                    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    const level = data[currentDate.toISOString().split('T')[0]] || 0;
+
+                    rect.setAttribute("class", "day-cell");
+                    rect.setAttribute("width", config.cellSize);
+                    rect.setAttribute("height", config.cellSize);
+                    rect.setAttribute("x", xPos);
+                    rect.setAttribute("y", 30 + day * (config.cellSize + config.cellMargin));
+                    rect.setAttribute("data-date", currentDate.toISOString());
+                    rect.setAttribute("data-level", level);
+
+                    // 悬停交互
+                    rect.addEventListener('mousemove', (e) => {
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'tooltip';
+                        tooltip.innerHTML = `
+                            ${currentDate.toLocaleDateString()}<br>
+                            活跃度: ${level} / 4
+                        `;
+                        document.body.appendChild(tooltip);
+
+                        const rect = e.target.getBoundingClientRect();
+                        tooltip.style.left = `${rect.left + window.scrollX}px`;
+                        tooltip.style.top = `${rect.top + window.scrollY - 40}px`;
+                        tooltip.style.opacity = '1';
+                    });
+
+                    rect.addEventListener('mouseleave', () => {
+                        document.querySelectorAll('.tooltip').forEach(t => t.remove());
+                    });
+
+                    svg.appendChild(rect);
+                }
+                xPos += config.cellSize + config.cellMargin;
+            }
+
+            container.appendChild(svg);
+        }
+
+        // 初始化
+        window.addEventListener('DOMContentLoaded', createHeatmap);
+    </script>
+</body>
+
+</html>

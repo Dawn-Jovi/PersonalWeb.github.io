@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/navbar.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar-container">
+    <div class="navbar-main">
+
+      <div class="navbar-logo">
+        <a href="#"><img src="img/2.png" alt=""></a>
+        <a href="index.html" class="logo" aria-label="返回首页">DawnJovi</a>
+      </div>
+
+      <!-- 导航链接 -->
+      <ul class="navbar-links"  role="menuitem" aria-haspopup="true" aria-expanded="false">
+        <!-- 第一个下拉菜单项 -->
+        <li class="menuitem">
+          <a href="#"><img src="./img/electronics.png" alt="关于本站图标"> 关于本站</a>
+          <ul class="dropdown-content">
+            <li><a href="AboutMe.html"><img src="img/nav1.png" alt="">关于我</a></li>
+            <li><a href="./404notfound/404.html"><img src="img/process.svg" alt="">时光机</a></li>
+          </ul>
+        </li>
+
+        <!-- 第二个下拉菜单 -->
+         <li class="menuitem">
+          <a href="#"><img src="./img/toys.png" alt="项目博物馆图标">项目博物馆</a>
+          <ul class="dropdown-content">
+            <li><a href="./404notfound/404.html">项目</a></li>
+            <li><a href="./404notfound/404.html">项目</a></li>
+            <li><a href="./404notfound/404.html">项目</a></li>
+            <li><a href="./404notfound/404.html">项目</a></li>
+          </ul>
+         </li>
+
+        <li class="menuitem">
+          <a href="#"><img src="./img/youq.png" alt="图标">妙妙屋</a>
+          <ul class="dropdown-content">
+            <li><a href="chishenme.html"><img src="img/eat.png" alt="">今天吃什么</a></li>
+            <li><a href="https://www.codedex.io/" target="_blank"><img src="img/world.png" alt="">编程世界</a></li>
+            <li><a href="https://humanbenchmark.com/" target="_blank"> <img src="img/human.png" alt="">人类基准</a></li>
+            <li><a href="https://www.allhistory.com/" target="_blank"><img src="img/history.png" alt="">全球历史</a></li>
+            <li><a href="https://bruno-simon.com/" target="_blank"> <img src="img/car.png" alt="">车车模拟器</a></li>
+
+          </ul>
+        </li>
+
+        <!-- 独立导航项 -->
+        <li class="nav-l">
+          <a href="./404notfound/404.html" class="nav-link" role="menuitem">
+            <img src="./img/daim.png" alt="代码实验室图标">代码实验室</a>
+        </li>
+        <li class="nav-l">
+          <a href="./404notfound/404.html" class="nav-link" role="menuitem">
+            <img src="img/input.png" alt="">留言板
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact">
+      <div class="flex space-x-4">
+        <a href="https://github.com/Dawn-Jovi" target="_blank" class="hover:text-gray-600">
+          <i class="fab fa-github text-xl"></i>
+        </a>
+        <a href="#contact" class="hover:text-gray-600">
+          <i class="fas fa-envelope text-xl"></i>
+        </a>
+      </div>
+    </div>
+
+  </nav>
+</body>
+</html>

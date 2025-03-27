@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代码进化录 - 全栈萌新的成长之路</title>
+
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preload" href="./js/load-navbar.js" as="script">
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="navbar-placeholder"></div>
+
+    <div class="background" id="bg">
+        <!-- 云朵通过JS动态生成 -->
+        <div class="sakura"></div>
+        
+    </div>
+
+    <main class="main">
+        <!-- 首屏大图 -->
+        <header class="dynamic-bg min-h-screen flex items-center pt-20"
+            style="margin-top: calc(-1 * var(--nav-height)); padding-top: var(--nav-height);">
+            <div class="container mx-auto px-4 text-center text-white">
+                <!-- 主标题 -->
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
+                    从<span class="text-yellow-300">Bug</span>中诞生<br>
+                    在<span class="text-yellow-300">代码</span>中进化
+                </h1>
+        
+                <!-- 时间线容器 -->
+                <div id="timeline" class="overflow-x-auto py-8">
+                    <div class="flex space-x-4 min-w-max px-4">
+                        <!-- 时间线条目示例 -->
+                        <div
+                            class="timeline-item bg-white/10 p-4 rounded-lg backdrop-blur-sm w-64 flex-shrink-0 transform hover:scale-105 transition">
+                            <div class="flex items-center mb-2">
+                                <i class="fab fa-react text-2xl text-blue-400 mr-2"></i>
+                                <span class="font-semibold">征服React</span>
+                            </div>
+                            <p class="text-sm text-gray-200">2024.03 - 首个SPA应用开发</p>
+                            <a href="#" class="mt-2 inline-block text-yellow-300 hover:underline">查看项目 →</a>
+                        </div>
+                        <!-- 更多时间线条目... -->
+                    </div>
+                </div>
+        
+                <!-- 快速入口卡片 -->
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="card bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition">
+                        <i class="fas fa-blog text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">时光机</h3>
+                        <p class="text-sm mb-4">记录每日学习与踩坑经历</p>
+                        <a href="./GrowthLog/GLmain.html"
+                            class="inline-block px-4 py-2 bg-yellow-300 text-gray-800 rounded-md hover:bg-yellow-400">阅读最新 →</a>
+                    </div>
+        
+        
+                    <div class="card bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition">
+                        <i class="fas fa-project-diagram text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">项目博物馆</h3>
+                        <p class="text-sm mb-4">查看从TodoList到全栈应用的进化</p>
+                        <a href="#"
+                            class="inline-block px-4 py-2 bg-yellow-300 text-gray-800 rounded-md hover:bg-yellow-400">探索项目 →</a>
+                    </div>
+        
+                    <div class="card bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition">
+                        <i class="fas fa-flask text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">代码实验室</h3>
+                        <p class="text-sm mb-4">在线体验我的学习成果</p>
+                        <a href="#"
+                            class="inline-block px-4 py-2 bg-yellow-300 text-gray-800 rounded-md hover:bg-yellow-400">开始实验 →</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </main>
+    
+    <footer class="mt-auto bg-transparent text-white py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm1">未选择的路标在黄昏时会发出微弱荧光</p>
+        </div>
+    </footer>
+
+    <script src="./js/load-navbar.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
