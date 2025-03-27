@@ -19,8 +19,9 @@
         fetch('navbar.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-            });
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('加载导航栏失败:', error));
     </script>
 
     <div class="background" id="bg">
