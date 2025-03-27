@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Konami Code 彩蛋</title>
+    <style>
+        #egg {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: gold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="egg">🎮 30条命解锁成功！🎉</div>
+
+    <script>
+        // 1. 定义Konami Code键位序列
+        const KONAMI_CODE = [
+            'ArrowUp', 'ArrowUp',
+            'ArrowDown', 'ArrowDown',
+            'ArrowLeft', 'ArrowRight',
+            'ArrowLeft', 'ArrowRight',
+            'b', 'a'
+        ];
+
+        // 2. 记录用户按键
+        let inputHistory = [];
+
+        // 3. 监听键盘事件
+        document.addEventListener('keydown', (event) => {
+            // 将按键加入历史记录
+            inputHistory.push(event.key);
+
+            // 保持数组长度与秘技一致
+            if (inputHistory.length > KONAMI_CODE.length) {
+                inputHistory.shift();
+            }
+
+            // 4. 检查是否匹配
+            if (arraysEqual(inputHistory, KONAMI_CODE)) {
+                activateEasterEgg();
+            }
+        });
+
+        // 5. 数组比对函数
+        function arraysEqual(a, b) {
+            return a.length === b.length &&
+                a.every((val, index) => val === b[index]);
+        }
+
+        // 6. 触发彩蛋效果
+        function activateEasterEgg() {
+            const egg = document.getElementById('egg');
+            egg.style.display = 'block';
+
+            // 添加动画效果
+            document.body.style.background = '#222';
+            setTimeout(() => {
+                egg.style.transform = 'translate(-50%, -50%) scale(1.2)';
+            }, 100);
+
+            // 播放音效（可选）
+            new Audio('https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3').play();
+        }
+    </script>
+</body>
+
+</html>

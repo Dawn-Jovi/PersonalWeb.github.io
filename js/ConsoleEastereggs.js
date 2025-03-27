@@ -37,7 +37,8 @@ window.secret = function() {
     'color: #ff85a2; font-size: 14px;',
     'color: #ff6b9d; font-style: italic;'
     );
-    
+    console.log('%c👋 试试输入Konami Code (↑↑↓↓←→←→BA)', 
+    'color: #f0f; font-size: 14px;');
     // 创建一些漂浮的爱心效果
     console.log('%c❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️', 'color: #ff6b9d; font-size: 20px;');
 };
