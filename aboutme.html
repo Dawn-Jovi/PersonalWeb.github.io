@@ -12,12 +12,31 @@
     
     <div id="navbar-placeholder"></div>
     <script>
-        fetch('./navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('加载导航栏失败:', error));
+        fetch('./navbar.html?v=' + new Date().getTime())  // 添加时间戳
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+
+                    // 直接内联绑定事件
+                    const hamburger = document.querySelector('.hamburger');
+                    const navLinks = document.querySelector('.navbar-links');
+
+                    if (hamburger && navLinks) {
+                        hamburger.addEventListener('click', () => {
+                            console.log('内联绑定的事件被触发！');
+                            hamburger.classList.toggle('active');
+                            navLinks.classList.toggle('active');
+                        });
+                    } else {
+                        console.error('内联绑定失败：元素未找到');
+                    }
+
+                    // const script = document.createElement('script');
+                    // script.src = './js/load-navbar.js?v=' + new Date().getTime();  // 同样添加时间戳
+                    // script.onload = () => console.log('load-navbar.js 加载成功！');
+                    // script.onerror = () => console.error('load-navbar.js 加载失败！');
+                    // document.body.appendChild(script);
+                });
     </script>
 
     <div class="container">

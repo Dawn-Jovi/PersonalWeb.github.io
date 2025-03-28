@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
   <nav class="navbar-container">
     <div class="navbar-main">
-
       <div class="navbar-logo">
         <a href="#"><img src="./img/2.png" alt=""></a>
         <a href="index.html" class="logo" aria-label="返回首页">DawnJovi</a>
       </div>
 
+      <!-- 汉堡菜单按钮 -->
+      <button class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <!-- 导航链接 -->
-      <ul class="navbar-links"  role="menuitem" aria-haspopup="true" aria-expanded="false">
+      <ul class="navbar-links">
         <!-- 第一个下拉菜单项 -->
         <li class="menuitem">
           <a href="#"><img src="./img/electronics.png" alt="关于本站图标"> 关于本站</a>
@@ -29,7 +38,7 @@
         </li>
 
         <!-- 第二个下拉菜单 -->
-         <li class="menuitem">
+        <li class="menuitem">
           <a href="#"><img src="./img/toys.png" alt="项目博物馆图标">项目博物馆</a>
           <ul class="dropdown-content">
             <li><a href="./404notfound/404.html">项目</a></li>
@@ -37,7 +46,7 @@
             <li><a href="./404notfound/404.html">项目</a></li>
             <li><a href="./404notfound/404.html">项目</a></li>
           </ul>
-         </li>
+        </li>
 
         <li class="menuitem">
           <a href="#"><img src="./img/youq.png" alt="图标">妙妙屋</a>
@@ -47,36 +56,36 @@
             <li><a href="https://humanbenchmark.com/" target="_blank"> <img src="img/human.png" alt="">人类基准</a></li>
             <li><a href="https://www.allhistory.com/" target="_blank"><img src="img/history.png" alt="">全球历史</a></li>
             <li><a href="https://bruno-simon.com/" target="_blank"> <img src="img/car.png" alt="">车车模拟器</a></li>
-
           </ul>
         </li>
 
         <!-- 独立导航项 -->
-        <li class="nav-l">
-          <a href="./404notfound/404.html" class="nav-link" role="menuitem">
+        <li>
+          <a href="./404notfound/404.html" class="nav-link">
             <img src="./img/daim.png" alt="代码实验室图标">代码实验室</a>
         </li>
-        <li class="nav-l">
-          <a href="./404notfound/404.html" class="nav-link" role="menuitem">
+        <li>
+          <a href="./404notfound/404.html" class="nav-link">
             <img src="./img/input.png" alt="">留言板
           </a>
         </li>
       </ul>
-    </div>
 
-    <div class="contact">
-      <div class="flex space-x-4">
-        <a href="https://github.com/Dawn-Jovi" target="_blank" class="hover:text-gray-600">
-          <i class="fab fa-github text-xl"></i>
-        </a>
-        <a href="#contact" class="hover:text-gray-600">
-          <i class="fas fa-envelope text-xl"></i>
-        </a>
+      <div class="contact">
+        <div class="flex space-x-4">
+          <a href="https://github.com/Dawn-Jovi" target="_blank" class="">
+            <!-- <i class="fab fa-github text-xl"></i> -->
+            <img src="./img/github.png" alt="">
+          </a>
+          <a href="#contact" class="">
+            <img src="./img/emaill.png" alt="">
+          </a>
+        </div>
       </div>
     </div>
-
-    <script src="./js/ConsoleEastereggs.js"></script>
-
   </nav>
+  <script src="./js/load-navbar.js"></script>
+  <script src="./js/ConsoleEastereggs.js"></script>
 </body>
+
 </html>

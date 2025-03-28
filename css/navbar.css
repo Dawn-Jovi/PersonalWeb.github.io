@@ -19,7 +19,6 @@
     --dropdown-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
     --dropdown-inset-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     --dropdown-blur: blur(12px) saturate(180%);
-    
 }
 
 /* 主体内容偏移 */
@@ -30,11 +29,11 @@ body {
 /* 导航栏容器 */
 .navbar-container {
     height: var(--nav-height);
-    position: fixed;/* 关键定位属性 */
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 9999;
-    transition: background 0.3s ease;/* 平滑动画 */
+    transition: background 0.3s ease;
     background: transparent;
     display: flex;
     justify-content: center;
@@ -44,13 +43,15 @@ body {
     user-select: none;
 }
 
-
 /* 导航主内容区 */
 .navbar-main {
     display: flex;
     align-items: center;
     gap: 3rem;
     padding: 0 20px;
+    /* width: 100%; */
+    max-width: 1200px;
+    justify-content: space-between;
 }
 
 /* LOGO样式 */
@@ -67,6 +68,8 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: flex;
+    align-items: center;
+    z-index: 10001;
 }
 
 .navbar-logo img {
@@ -91,9 +94,7 @@ body {
     gap: 6px;
     padding: 0 12px;
     height: var(--nav-height);
-    /* 高度与导航栏一致 */
     line-height: var(--nav-height);
-    /* 行高与高度相同 */
     border-radius: 4px;
     transition:
         opacity 0.3s ease,
@@ -107,6 +108,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
 }
+
 /* 图标样式 */
 .navbar-links img {
     width: 18px;
@@ -123,9 +125,7 @@ body {
 .menuitem {
     position: relative;
     padding-bottom: 8px;
-    /* 增加热区 */
 }
-
 
 /* 下拉菜单显示逻辑 */
 .menuitem:hover .dropdown-content {
@@ -133,7 +133,6 @@ body {
     opacity: 1;
     visibility: visible;
     transition-delay: 0s;
-    /* 取消进入延迟 */
 }
 
 /* 添加三角形连接指示 */
@@ -158,20 +157,15 @@ body {
     position: absolute;
     display: none;
     min-width: 160px;
-    /* 增加最小宽度 */
     width: auto;
     border-radius: 6px;
     padding: 8px 0;
     margin-top: 8px;
     text-align: left;
     left: 0;
-
-    /* 背景与模糊效果 */
     background: var(--dropdown-bg);
     backdrop-filter: var(--dropdown-blur);
     -webkit-backdrop-filter: var(--dropdown-blur);
-
-    /* 边框与阴影 */
     border: var(--dropdown-border);
     box-shadow: var(--dropdown-shadow), var(--dropdown-inset-shadow);
 }
@@ -182,53 +176,16 @@ body {
     padding: 12px 16px;
     font-size: 0.95rem;
     display: flex;
-    /* 使用 flex 布局 */
     align-items: center;
-    /* 垂直居中 */
     gap: 8px;
-    /* 图片和文字间距 */
     width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
-    /* 防止文字换行 */
 }
 
 .dropdown-content a:hover {
     transition: background 0.1s ease;
-    /* background: rgba(0, 0, 0, 0.1); */
 }
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .navbar-main {
-        gap: 1rem;
-        justify-content: space-between;
-        padding: 0 15px;
-    }
-
-    .navbar-links {
-        gap: 0.8rem;
-    }
-
-    .navbar-links a {
-        font-size: 1rem;
-        padding: 6px 10px;
-    }
-
-    .dropdown-content {
-        min-width: 140px;
-        right: 0;
-        /* 移动端右侧对齐 */
-    }
-}
-
-/* 大屏幕适配 */
-@media (min-width: 1200px) {
-    .navbar-main {
-        gap: 5rem;
-    }
-}
-
 
 .contact {
     position: absolute;
@@ -242,25 +199,18 @@ body {
     flex-direction: row;
 }
 
-/* 添加悬停动画 */
 .contact a {
-    /* 基础尺寸 */
-    width: 36px;
-    /* 容器宽度 */
-    height: 36px;
-    /* 容器高度 */
+    width: 30px;
+    height: 30px;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    /* 圆角 */
     transition: all 0.3s ease;
-
 }
 
 .contact i {
     font-size: 1.2rem;
-    /* 图标大小 (约19.2px) */
     transition: inherit;
 }
 
@@ -268,14 +218,183 @@ body {
     transform: scale(1.15);
 }
 
-/* 增加点击反馈 */
 .contact a:active {
     transform: scale(0.95);
 }
 
 .contact .flex {
     flex-wrap: nowrap !important;
-    /* 强制不换行 */
     width: auto !important;
-    /* 取消宽度限制 */
+}
+
+/* 汉堡菜单按钮 */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 10001;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+    top: 10px;
+}
+
+.hamburger span:nth-child(4) {
+    top: 20px;
+}
+
+/* 汉堡菜单激活状态 */
+.hamburger.active span:nth-child(1) {
+    top: 10px;
+    width: 0%;
+    left: 50%;
+}
+
+.hamburger.active span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(4) {
+    top: 10px;
+    width: 0%;
+    left: 50%;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: block !important;
+        /* 强制显示 */
+        pointer-events: auto !important;
+        /* 确保可点击 */
+        z-index: 10001;
+        /* 确保在最上层 */
+    }
+
+    /* 隐藏常规导航链接 */
+    .navbar-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(45, 64, 89, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transform: translateY(-100%);
+        transition: transform 0.5s ease;
+        z-index: 10000;
+        padding-top: var(--nav-height);
+    }
+
+    /* 显示移动菜单 */
+    .navbar-links.active {
+        transform: translateY(0);
+    }
+
+    /* 导航链接样式 */
+    .navbar-links a {
+        font-size: 1.5rem;
+        padding: 12px 20px;
+        height: auto;
+        line-height: normal;
+    }
+
+    /* 下拉菜单调整 */
+    .dropdown-content {
+        position: relative;
+        display: none;
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .menuitem::after {
+        display: none;
+    }
+
+    /* 显示汉堡菜单 */
+    .hamburger {
+        display: block;
+    }
+
+    /* 调整联系图标位置 */
+    .contact {
+        position: static;
+        transform: none;
+        margin-left: auto;
+        padding-right: 15px;
+    }
+
+    /* 下拉菜单项样式调整 */
+    .dropdown-content a {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        justify-content: center;
+    }
+
+    /* 菜单项悬停效果 */
+    .navbar-links a:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* 中等屏幕适配 */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .navbar-main {
+        gap: 2rem;
+        padding: 0 15px;
+    }
+
+    .navbar-links {
+        gap: 1rem;
+    }
+
+    .navbar-links a {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+}
+
+/* 大屏幕适配 */
+@media (min-width: 1200px) {
+    .navbar-main {
+        gap: 5rem;
+    }
 }
