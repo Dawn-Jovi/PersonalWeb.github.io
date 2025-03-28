@@ -1,12 +1,12 @@
 
 @font-face {
     font-family: 'ys';
-    src: url(/font/YanShiYouRanXiaoKai-2.ttf);
+    src: url(./font/YanShiYouRanXiaoKai-2.ttf);
 }
 
 @font-face {
     font-family: 'xiangsu1';
-    src: url(/font/HYPixel11pxU-2.ttf) format('xiangsu');
+    src: url(./font/HYPixel11pxU-2.ttf) format('xiangsu');
 }
 
 /* 在main.css中添加 */
