@@ -151,7 +151,7 @@ body {
     text-align: center;
     font-size: 25px;
     color: #ffffff;
-    font-family: 'xiangsu';
+    font-family: 'xiangsu', sans-serif;
     user-select: none;
 }
 
@@ -162,6 +162,8 @@ body {
 .font-semibold{
     user-select: none;
 }
+
+
 
 /* ==================== 移动端适配 ==================== */
 @media (max-width: 768px) {
